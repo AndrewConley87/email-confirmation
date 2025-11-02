@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Activated - SOOQ-TECH</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 60px 40px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+        
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: #10b981;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            font-size: 40px;
+            color: white;
+        }
+        
+        .title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #1f2937;
+            margin-bottom: 20px;
+        }
+        
+        .message {
+            font-size: 18px;
+            color: #10b981;
+            font-weight: 600;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        
+        .instruction {
+            font-size: 16px;
+            color: #6b7280;
+            margin-bottom: 40px;
+            line-height: 1.5;
+        }
+        
+        .close-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            transition: transform 0.2s;
+        }
+        
+        .close-button:hover {
+            transform: translateY(-2px);
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 40px 20px;
+            }
+            
+            .title {
+                font-size: 24px;
+            }
+            
+            .message {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">SOOQ-TECH</div>
+        
+        <div class="success-icon">✓</div>
+        
+        <h1 class="title" id="title">Account Activated</h1>
+        
+        <p class="message" id="message">
+            Thank you for subscribing. Your account has been activated.
+        </p>
+        
+        <p class="instruction" id="instruction">
+            You can now close this page and log in to the app to complete your personal information.
+        </p>
+        
+        <button class="close-button" onclick="window.close()" id="closeBtn">
+            Close Page
+        </button>
+    </div>
+
+    <script>
+        // Multi-language support
+        const translations = {
+            en: {
+                title: "Account Activated",
+                message: "Thank you for subscribing. Your account has been activated.",
+                instruction: "You can now close this page and log in to the app to complete your personal information.",
+                closeBtn: "Close Page"
+            },
+            ar: {
+                title: "تم تفعيل الحساب",
+                message: "شكراً لك على الاشتراك. تم تفعيل حسابك بنجاح.",
+                instruction: "يمكنك الآن إغلاق هذه الصفحة وتسجيل الدخول إلى التطبيق لإكمال معلوماتك الشخصية.",
+                closeBtn: "إغلاق الصفحة"
+            },
+            fr: {
+                title: "Compte Activé",
+                message: "Merci de vous être inscrit. Votre compte a été activé avec succès.",
+                instruction: "Vous pouvez maintenant fermer cette page et vous connecter à l'application pour compléter vos informations personnelles.",
+                closeBtn: "Fermer la Page"
+            }
+        };
+
+        // Get language from URL parameter or default to English
+        const urlParams = new URLSearchParams(window.location.search);
+        const lang = urlParams.get('lang') || 'en';
+        const t = translations[lang] || translations.en;
+
+        // Update content
+        document.getElementById('title').textContent = t.title;
+        document.getElementById('message').textContent = t.message;
+        document.getElementById('instruction').textContent = t.instruction;
+        document.getElementById('closeBtn').textContent = t.closeBtn;
+
+        // Set RTL for Arabic
+        if (lang === 'ar') {
+            document.body.style.direction = 'rtl';
+        }
+
+        // Auto-close after 10 seconds
+        setTimeout(() => {
+            window.close();
+        }, 10000);
+    </script>
+</body>
+</html>
